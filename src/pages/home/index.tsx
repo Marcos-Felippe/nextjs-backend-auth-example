@@ -68,6 +68,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     // Verificando se o token está nos cookies
     const { ['nextauth.token']: token } = parseCookies(ctx);
     
+    // Se o token não estiver disponivel, redireciona para a page de login
     if (!token) {
       return {
         redirect: {
