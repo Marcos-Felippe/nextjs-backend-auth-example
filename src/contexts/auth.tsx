@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }: any) => {
         const recoveredUser = localStorage.getItem("user");
 
         const { ['nextauth.token']: token } = parseCookies();
-        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        //api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
         if(recoveredUser) {
             setUser(JSON.parse(recoveredUser));
@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }: any) => {
         });
         
         // Passando o token no header das proximas requisições à api
-        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        //api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
         setUser(loggedUser);
         Router.push("/home");
@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }: any) => {
         destroyCookie(null, 'nextauth.token');
 
         // Deletando o token do header
-        api.defaults.headers.common['Authorization'] = "";
+        //api.defaults.headers.common['Authorization'] = "";
 
         setUser(null);
         Router.push("/")
